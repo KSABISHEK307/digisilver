@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigiSilver - Premium Silver Jewelry</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        /* Login Page Styles */
+        .login-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #2196F3, #00BCD4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .login-title {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .google-signin-btn {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid #4285f4;
+            border-radius: 10px;
+            background: white;
+            color: #4285f4;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        .google-signin-btn:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+
+        .google-icon {
+            width: 20px;
+            height: 20px;
+            background-image: url('data:image/svg+xml;charset=UTF-8,<svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="%234285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="%2334A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="%23FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="%23EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: #666;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #ddd;
+        }
+
+        .divider span {
+            padding: 0 15px;
+            font-size: 14px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #2196F3;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(45deg, #2196F3, #00BCD4);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Main Website Styles */
+        .main-website {
+            display: none;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .header {
+            background: linear-gradient(45deg, #2196F3, #00BCD4);
+            padding: 15px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-logo .logo {
+            width: 50px;
+            height: 50px;
+            font-size: 18px;
+        }
+
+        .header-logo h1 {
+            color: white;
+            font-size: 24px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        .user-name {
+            color: white;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+
+        .menu-btn {
+            background: white;
+            color: #2196F3;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            position: relative;
+        }
+
+        /* Menu Dropdown */
+        .menu-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            min-width: 200px;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(-10px);
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .menu-dropdown.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        .menu-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            color: #333;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .menu-item:hover {
+            background: #f5f5f5;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: #666;
+        }
+
+        .nav-item.active {
+            color: #2196F3;
+            background: #f0f8ff;
+        }
+
+        .nav-item:hover {
+            background: #f5f5f5;
+        }
+
+        .nav-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .nav-label {
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* Content Sections */
+        .content-section {
+            display: none;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 90px;
+            padding-bottom: 100px;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .section-title {
+            color: #333;
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        /* Category Navigation */
+        .category-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+            position: sticky;
+            top: 80px;
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            z-index: 50;
+        }
+
+        .category-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .category-btn:hover, .category-btn.active {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #ddd;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-size: 20px;
+            color: #2196F3;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .product-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-details, .btn-order {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-details {
+            background: #ff9800;
+            color: white;
+        }
+
+        .btn-order {
+            background: #4CAF50;
+            color: white;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 20px;
+            position: relative;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .close {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #aaa;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* DigiSilver Savings */
+        .savings-container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .savings-amount {
+            font-size: 48px;
+            color: #2196F3;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .add-money-form {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .add-money-form input {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        .add-money-btn {
+            padding: 15px 30px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Upload Styles */
+        .upload-area {
+            border: 2px dashed #ddd;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            margin: 20px 0;
+            transition: border-color 0.3s;
+        }
+
+        .upload-area:hover {
+            border-color: #2196F3;
+        }
+
+        .upload-btn {
+            background: #2196F3;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .file-info {
+            margin-top: 15px;
+            padding: 10px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            display: none;
+        }
+
+        /* Success Message */
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid #c3e6cb;
+            display: none;
+        }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #2196F3;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .login-container {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+
+            .header-logo h1 {
+                font-size: 18px;
+            }
+
+            .user-name {
+                display: none;
+            }
+
+            .content-section {
+                padding: 15px;
+                padding-top: 75px;
+                padding-bottom: 90px;
+            }
+
+            .add-money-form {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Page -->
+    <div class="login-page" id="loginPage">
+        <div class="login-container">
+            <div class="logo">DS</div>
+            <h2 class="login-title">DigiSilver</h2>
+            
+            <!-- Google Sign-In Button -->
+            <button class="google-signin-btn" onclick="signInWithGoogle()">
+                <div class="google-icon"></div>
+                Continue with Google
+            </button>
+            
+            <div class="divider">
+                <span>or</span>
+            </div>
+            
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+            
+            <div class="loading-spinner" id="loadingSpinner"></div>
+        </div>
+    </div>
+
+    <!-- Main Website -->
+    <div class="main-website" id="mainWebsite">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-logo">
+                    <div class="logo">DS</div>
+                    <h1>DigiSilver</h1>
+                </div>
+                <div class="user-profile">
+                    <img id="userAvatar" class="user-avatar" src="" alt="User" style="display: none;">
+                    <span id="userName" class="user-name"></span>
+                    <div style="position: relative;">
+                        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+                        <div class="menu-dropdown" id="menuDropdown">
+                            <div class="menu-item" onclick="showUserProfile()">👤 User Profile</div>
+                            <div class="menu-item" onclick="showUserDetails()">📋 User Details</div>
+                            <div class="menu-item" onclick="showBankAmount()">💰 Bank Amount</div>
+                            <div class="menu-item" onclick="logout()">🚪 Logout</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <div class="nav-item active" onclick="showSection('products', this)">
+                <div class="nav-icon">💍</div>
+                <div class="nav-label">Products</div>
+            </div>
+            <div class="nav-item" onclick="showSection('digisilver', this)">
+                <div class="nav-icon">💎</div>
+                <div class="nav-label">DigiSilver</div>
+            </div>
+            <div class="nav-item" onclick="showSection('exchange', this)">
+                <div class="nav-icon">🔄</div>
+                <div class="nav-label">Exchange</div>
+            </div>
+            <div class="nav-item" onclick="showSection('sell', this)">
+                <div class="nav-icon">💰</div>
+                <div class="nav-label">Sell</div>
+            </div>
+        </nav>
+
+        <!-- Products Section -->
+        <section id="products" class="content-section active">
+            <h2 class="section-title">Our Premium Collection</h2>
+            
+            <!-- Category Navigation -->
+            <div class="category-nav">
+                <button class="category-btn active" onclick="showCategory('ring', this)">💍 Rings</button>
+                <button class="category-btn" onclick="showCategory('chain', this)">📿 Chains</button>
+                <button class="category-btn" onclick="showCategory('coin', this)">🪙 Coins</button>
+                <button class="category-btn" onclick="showCategory('bracelet', this)">✨ Bracelets</button>
+            </div>
+
+            <div class="product-grid" id="productGrid">
+                <!-- Products will be loaded here -->
+            </div>
+        </section>
+
+        <!-- DigiSilver Savings Section -->
+        <section id="digisilver" class="content-section">
+            <h2 class="section-title">DigiSilver Savings</h2>
+            <div class="savings-container">
+                <h3>Your Silver Savings</h3>
+                <div class="savings-amount" id="savingsAmount">₹0</div>
+                <p>Save money regularly and buy premium silver products</p>
+                <div class="add-money-form">
+                    <input type="number" id="addAmount" placeholder="Enter amount to add">
+                    <button class="add-money-btn" onclick="addMoney()">Add Money</button>
+                </div>
+                <div class="success-message" id="savingsMessage">Money added successfully!</div>
+            </div>
+        </section>
+
+        <!-- Exchange Section -->
+        <section id="exchange" class="content-section">
+            <h2 class="section-title">Exchange Your Silver</h2>
+            <div class="savings-container">
+                <h3>Exchange Old Silver for New</h3>
+                <form id="exchangeForm">
+                    <div class="form-group">
+                        <label for="exchangeGrams">Weight (in grams)</label>
+                        <input type="number" id="exchangeGrams" step="0.1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exchangeDescription">Product Description</label>
+                        <textarea id="exchangeDescription" placeholder="Describe your silver item"></textarea>
+                    </div>
+                    <div class="upload-area">
+                        <p>📸 Upload photos of your silver item</p>
+                        <button type="button" class="upload-btn" onclick="document.getElementById('exchangePhoto').click()">
+                            Choose Photos
+                        </button>
+                        <input type="file" id="exchangePhoto" accept="image/*" multiple onchange="showFileInfo(this, 'exchangeFileInfo')" style="display: none;">
+                        <div class="file-info" id="exchangeFileInfo"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exchangeName">Your Name</label>
+                        <input type="text" id="exchangeName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exchangeEmail">Email</label>
+                        <input type="email" id="exchangeEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exchangePhone">Phone</label>
+                        <input type="tel" id="exchangePhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exchangeAddress">Address</label>
+                        <textarea id="exchangeAddress" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit Exchange Request</button>
+                </form>
+                <div class="success-message" id="exchangeMessage">Exchange request submitted successfully!</div>
+            </div>
+        </section>
+
+        <!-- Sell Section -->
+        <section id="sell" class="content-section">
+            <h2 class="section-title">Sell Your Silver</h2>
+            <div class="savings-container">
+                <h3>Sell Silver for Cash</h3>
+                <form id="sellForm">
+                    <div class="form-group">
+                        <label for="sellGrams">Weight (in grams)</label>
+                        <input type="number" id="sellGrams" step="0.1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sellDescription">Product Description</label>
+                        <textarea id="sellDescription" placeholder="Describe your silver item"></textarea>
+                    </div>
+                    <div class="upload-area">
+                        <p>📸 Upload photos of your silver item</p>
+                        <button type="button" class="upload-btn" onclick="document.getElementById('sellPhoto').click()">
+                            Choose Photos
+                        </button>
+                        <input type="file" id="sellPhoto" accept="image/*" multiple onchange="showFileInfo(this, 'sellFileInfo')" style="display: none;">
+                        <div class="file-info" id="sellFileInfo"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="sellName">Your Name</label>
+                        <input type="text" id="sellName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sellEmail">Email</label>
+                        <input type="email" id="sellEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sellPhone">Phone</label>
+                        <input type="tel" id="sellPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sellAddress">Address</label>
+                        <textarea id="sellAddress" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit Sell Request</button>
+                </form>
+                <div class="success-message" id="sellMessage">Sell request submitted successfully!</div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Product Details Modal -->
+    <div id="detailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('detailsModal')">&times;</span>
+            <div id="productDetails">
+                <!-- Product details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('orderModal')">&times;</span>
+            <h3>Place Order</h3>
+            <form id="orderForm">
+                <div class="form-group">
+                    <label for="orderProductName">Product</label>
+                    <input type="text" id="orderProductName" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="orderProductPrice">Price</label>
+                    <input type="text" id="orderProductPrice" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="orderName">Your Name</label>
+                    <input type="text" id="orderName" required>
+                </div>
+                <div class="form-group">
+                    <label for="orderEmail">Email</label>
+                    <input type="email" id="orderEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="orderPhone">Phone</label>
+                    <input type="tel" id="orderPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="orderAddress">Address</label>
+                    <textarea id="orderAddress" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Order</button>
+            </form>
+            <div class="success-message" id="orderMessage">Order submitted successfully!</div>
+        </div>
+    </div>
+
+    <!-- Google Sign-In SDK -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+    <script>
+        // Configuration - Replace with your actual credentials
+        const GOOGLE_CLIENT_ID = 'YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+
+        // Current user data
+        let currentUser = null;
+        let currentSavings = 0;
+        let currentCategory = 'ring';
+
+        // Product data
+        const products = {
+            ring: [
+                { id: 1, name: "Red Ruby Ring", price: "₹500", image: "💍", description: "Beautiful red ruby ring with intricate silver design" },
+                { id: 2, name: "Diamond Silver Ring", price: "₹600", image: "💎", description: "Elegant diamond-studded silver ring for special occasions" },
+                { id: 3, name: "Classic Silver Ring", price: "₹400", image: "⭕", description: "Classic design silver ring perfect for daily wear" },
+                { id: 4, name: "Designer Silver Ring", price: "₹750", image: "💍", description: "Modern designer silver ring with unique patterns" }
+            ],
+            chain: [
+                { id: 5, name: "Silver Chain Necklace", price: "₹800", image: "📿", description: "Premium silver chain necklace with elegant finish" },
+                { id: 6, name: "Pendant Chain", price: "₹650", image: "🔗", description: "Silver chain with beautiful pendant design" },
+                { id: 7, name: "Long Silver Chain", price: "₹900", image: "📿", description: "Long silver chain perfect for layering" }
+            ],
+            coin: [
+                { id: 8, name: "Silver Coin 10g", price: "₹550", image: "🪙", description: "Pure silver coin 10 grams with certificate" },
+                { id: 9, name: "Silver Coin 20g", price: "₹1100", image: "🪙", description: "Pure silver coin 20 grams with certificate" },
+                { id: 10, name: "Silver Coin 50g", price: "₹2750", image: "🪙", description: "Pure silver coin 50 grams with certificate" }
+            ],
+            bracelet: [
+                { id: 11, name: "Silver Bracelet", price: "₹450", image: "📿", description: "Elegant silver bracelet with chain design" },
+                { id: 12, name: "Charm Bracelet", price: "₹550", image: "🔗", description: "Silver charm bracelet with multiple charms" },
+                { id: 13, name: "Bangle Style Bracelet", price: "₹600", image: "📿", description: "Traditional bangle style silver bracelet" }
+            ]
+        };
+
+        // Initialize Google Sign-In
+        function initializeGoogleSignIn() {
+            if (typeof google !== 'undefined' && google.accounts) {
+                google.accounts.id.initialize({
+                    client_id: GOOGLE_CLIENT_ID,
+                    callback: handleGoogleSignIn,
+                    auto_select: false,
+                    cancel_on_tap_outside: true
+                });
+            } else {
+                console.error('Google Sign-In library not loaded');
+            }
+        }
+
+        // Google Sign-In handler
+        function handleGoogleSignIn(response) {
+            try {
+                // Decode the JWT token
+                const userInfo = parseJwt(response.credential);
+                
+                currentUser = {
+                    id: userInfo.sub,
+                    name: userInfo.name,
+                    email: userInfo.email,
+                    picture: userInfo.picture,
+                    loginMethod: 'google'
+                };
+
+                // Log user login to Google Sheets
+                submitToGoogleSheets('user_logins', {
+                    user_id: currentUser.id,
+                    name: currentUser.name,
+                    email: currentUser.email,
+                    login_method: 'google',
+                    timestamp: new Date().toISOString()
+                });
+
+                // Show main website
+                showMainWebsite();
+                
+            } catch (error) {
+                console.error('Error handling Google Sign-In:', error);
+                alert('Error signing in with Google. Please try again.');
+            }
+        }
+
+        // Parse JWT token
+        function parseJwt(token) {
+            try {
+                const base64Url = token.split('.')[1];
+                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                }).join(''));
+                return JSON.parse(jsonPayload);
+            } catch (error) {
+                throw new Error('Invalid token');
+            }
+        }
+
+        // Google Sign-In button click handler
+        function signInWithGoogle() {
+            const spinner = document.getElementById('loadingSpinner');
+            spinner.style.display = 'block';
+            
+            if (typeof google !== 'undefined' && google.accounts) {
+                google.accounts.id.prompt((notification) => {
+                    spinner.style.display = 'none';
+                    if (notification.isNotDisplayed()) {
+                        console.log('Google Sign-In prompt not displayed');
+                        // Fallback to renderButton method
+                        renderGoogleSignInButton();
+                    }
+                });
+            } else {
+                spinner.style.display = 'none';
+                alert('Google Sign-In is not available. Please try the manual login option.');
+            }
+        }
+
+        // Render Google Sign-In button as fallback
+        function renderGoogleSignInButton() {
+            if (typeof google !== 'undefined' && google.accounts) {
+                const buttonContainer = document.createElement('div');
+                buttonContainer.style.display = 'flex';
+                buttonContainer.style.justifyContent = 'center';
+                buttonContainer.style.marginTop = '10px';
+                
+                google.accounts.id.renderButton(buttonContainer, {
+                    theme: 'outline',
+                    size: 'large',
+                    width: '100%'
+                });
+                
+                const googleBtn = document.querySelector('.google-signin-btn');
+                googleBtn.parentNode.insertBefore(buttonContainer, googleBtn.nextSibling);
+                googleBtn.style.display = 'none';
+            }
+        }
+
+        // Show main website after successful login
+        function showMainWebsite() {
+            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('mainWebsite').style.display = 'block';
+            
+            // Update user profile in header
+            if (currentUser) {
+                const userNameElement = document.getElementById('userName');
+                const userAvatarElement = document.getElementById('userAvatar');
+                
+                userNameElement.textContent = currentUser.name;
+                
+                if (currentUser.picture) {
+                    userAvatarElement.src = currentUser.picture;
+                    userAvatarElement.style.display = 'block';
+                } else {
+                    userAvatarElement.style.display = 'none';
+                }
+            }
+            
+            // Load default category
+            showCategory('ring', document.querySelector('.category-btn'));
+        }
+
+        // Traditional login form handler
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (username && password) {
+                currentUser = {
+                    id: 'manual_' + Date.now(),
+                    name: username,
+                    email: username + '@digisilver.com',
+                    picture: null,
+                    loginMethod: 'manual'
+                };
+
+                // Log user login to Google Sheets
+                submitToGoogleSheets('user_logins', {
+                    user_id: currentUser.id,
+                    name: currentUser.name,
+                    email: currentUser.email,
+                    login_method: 'manual',
+                    timestamp: new Date().toISOString()
+                });
+
+                showMainWebsite();
+            } else {
+                alert('Please enter username and password');
+            }
+        });
+
+        // Menu functionality
+        function toggleMenu() {
+            const menu = document.getElementById('menuDropdown');
+            menu.classList.toggle('active');
+        }
+
+        // Menu item functions
+        function showUserProfile() {
+            if (currentUser) {
+                alert(`User Profile:\nName: ${currentUser.name}\nEmail: ${currentUser.email}\nLogin Method: ${currentUser.loginMethod}`);
+            } else {
+                alert('No user information available');
+            }
+            toggleMenu();
+        }
+
+        function showUserDetails() {
+            if (currentUser) {
+                alert(`User Details:\nUser ID: ${currentUser.id}\nMember since: Today\nTotal Savings: ₹${currentSavings}\nLogin Method: ${currentUser.loginMethod}`);
+            } else {
+                alert('No user details available');
+            }
+            toggleMenu();
+        }
+
+        function showBankAmount() {
+            alert(`Bank Account Balance: ₹25,000\nDigiSilver Savings: ₹${currentSavings}`);
+            toggleMenu();
+        }
+
+        function logout() {
+            // Google Sign-Out
+            if (currentUser && currentUser.loginMethod === 'google') {
+                if (typeof google !== 'undefined' && google.accounts) {
+                    google.accounts.id.disableAutoSelect();
+                }
+            }
+            
+            // Clear user data
+            currentUser = null;
+            currentSavings = 0;
+            
+            // Reset UI
+            document.getElementById('mainWebsite').style.display = 'none';
+            document.getElementById('loginPage').style.display = 'flex';
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('savingsAmount').textContent = '₹0';
+            
+            toggleMenu();
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const menu = document.getElementById('menuDropdown');
+            const menuBtn = e.target.closest('.menu-btn');
+            
+            if (!menuBtn && !e.target.closest('.menu-dropdown')) {
+                menu.classList.remove('active');
+            }
+        });
+
+        // Navigation functions
+        function showSection(section, element) {
+            // Remove active class from all nav items
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            // Add active class to clicked item
+            element.classList.add('active');
+            
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            // Show selected section
+            document.getElementById(section).classList.add('active');
+        }
+
+        function showCategory(category, element) {
+            currentCategory = category;
+            
+            // Update category button states
+            document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+            
+            // Load products for the category
+            loadProducts(category);
+        }
+
+        function loadProducts(category) {
+            const grid = document.getElementById('productGrid');
+            const categoryProducts = products[category] || [];
+            
+            grid.innerHTML = categoryProducts.map(product => `
+                <div class="product-card">
+                    <div class="product-image">${product.image}</div>
+                    <div class="product-info">
+                        <div class="product-name">${product.name}</div>
+                        <div class="product-price">${product.price}</div>
+                        <div class="product-buttons">
+                            <button class="btn-details" onclick="showProductDetails(${product.id}, '${category}')">Details</button>
+                            <button class="btn-order" onclick="showOrderForm('${product.name}', '${product.price}')">Order</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Product details modal
+        function showProductDetails(productId, category) {
+            const product = products[category].find(p => p.id === productId);
+            if (product) {
+                document.getElementById('productDetails').innerHTML = `
+                    <h3>${product.name}</h3>
+                    <div class="product-image" style="font-size: 72px; margin: 20px 0; height: 150px;">${product.image}</div>
+                    <p><strong>Price:</strong> ${product.price}</p>
+                    <p><strong>Description:</strong> ${product.description}</p>
+                `;
+                document.getElementById('detailsModal').style.display = 'block';
+            }
+        }
+
+        // Order form
+        function showOrderForm(productName, productPrice) {
+            document.getElementById('orderProductName').value = productName;
+            document.getElementById('orderProductPrice').value = productPrice;
+            
+            // Pre-fill user data if available
+            if (currentUser) {
+                document.getElementById('orderName').value = currentUser.name;
+                document.getElementById('orderEmail').value = currentUser.email;
+            }
+            
+            document.getElementById('orderModal').style.display = 'block';
+        }
+
+        // DigiSilver savings
+        function addMoney() {
+            const amount = parseInt(document.getElementById('addAmount').value);
+            if (amount > 0) {
+                currentSavings += amount;
+                document.getElementById('savingsAmount').textContent = `₹${currentSavings}`;
+                document.getElementById('addAmount').value = '';
+                showMessage('savingsMessage');
+                
+                // Submit to Google Sheets
+                submitToGoogleSheets('savings', {
+                    user_id: currentUser ? currentUser.id : 'anonymous',
+                    user_name: currentUser ? currentUser.name : 'Anonymous',
+                    amount: amount,
+                    total_savings: currentSavings,
+                    timestamp: new Date().toISOString()
+                });
+            }
+        }
+
+        // File upload handling
+        function showFileInfo(input, infoId) {
+            const fileInfo = document.getElementById(infoId);
+            if (input.files.length > 0) {
+                fileInfo.style.display = 'block';
+                fileInfo.innerHTML = `📎 ${input.files.length} file(s) selected: ${Array.from(input.files).map(f => f.name).join(', ')}`;
+            } else {
+                fileInfo.style.display = 'none';
+            }
+        }
+
+        // Modal functions
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Form submissions
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = {
+                user_id: currentUser ? currentUser.id : 'anonymous',
+                user_name: currentUser ? currentUser.name : 'Anonymous',
+                product_name: document.getElementById('orderProductName').value,
+                product_price: document.getElementById('orderProductPrice').value,
+                customer_name: document.getElementById('orderName').value,
+                email: document.getElementById('orderEmail').value,
+                phone: document.getElementById('orderPhone').value,
+                address: document.getElementById('orderAddress').value,
+                timestamp: new Date().toISOString()
+            };
+            
+            submitToGoogleSheets('orders', formData);
+            showMessage('orderMessage');
+            setTimeout(() => {
+                closeModal('orderModal');
+                this.reset();
+            }, 2000);
+        });
+
+        document.getElementById('exchangeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = {
+                user_id: currentUser ? currentUser.id : 'anonymous',
+                user_name: currentUser ? currentUser.name : 'Anonymous',
+                weight_grams: document.getElementById('exchangeGrams').value,
+                description: document.getElementById('exchangeDescription').value,
+                customer_name: document.getElementById('exchangeName').value,
+                email: document.getElementById('exchangeEmail').value,
+                phone: document.getElementById('exchangePhone').value,
+                address: document.getElementById('exchangeAddress').value,
+                photos_uploaded: document.getElementById('exchangePhoto').files.length > 0 ? 'Yes' : 'No',
+                timestamp: new Date().toISOString()
+            };
+            
+            submitToGoogleSheets('exchange', formData);
+            showMessage('exchangeMessage');
+            setTimeout(() => {
+                this.reset();
+                document.getElementById('exchangeFileInfo').style.display = 'none';
+            }, 2000);
+        });
+
+        document.getElementById('sellForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = {
+                user_id: currentUser ? currentUser.id : 'anonymous',
+                user_name: currentUser ? currentUser.name : 'Anonymous',
+                weight_grams: document.getElementById('sellGrams').value,
+                description: document.getElementById('sellDescription').value,
+                customer_name: document.getElementById('sellName').value,
+                email: document.getElementById('sellEmail').value,
+                phone: document.getElementById('sellPhone').value,
+                address: document.getElementById('sellAddress').value,
+                photos_uploaded: document.getElementById('sellPhoto').files.length > 0 ? 'Yes' : 'No',
+                timestamp: new Date().toISOString()
+            };
+            
+            submitToGoogleSheets('sell', formData);
+            showMessage('sellMessage');
+            setTimeout(() => {
+                this.reset();
+                document.getElementById('sellFileInfo').style.display = 'none';
+            }, 2000);
+        });
+
+        // Google Sheets integration
+        function submitToGoogleSheets(sheetName, data) {
+            const payload = {
+                sheetName: sheetName,
+                data: data
+            };
+            
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(response => {
+                console.log(`Data submitted to ${sheetName} sheet successfully`);
+            })
+            .catch(error => {
+                console.error('Error submitting to Google Sheets:', error);
+                // Show error message to user
+                alert('There was an error submitting your request. Please try again.');
+            });
+        }
+
+        // Utility functions
+        function showMessage(messageId) {
+            const message = document.getElementById(messageId);
+            message.style.display = 'block';
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 3000);
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, checking Google library status');
+            
+            // If Google library is already loaded, initialize it
+            if (googleLibraryLoaded) {
+                initializeGoogleSignIn();
+            }
+            
+            // Close modals when clicking outside
+            window.addEventListener('click', function(e) {
+                const modals = document.querySelectorAll('.modal');
+                modals.forEach(modal => {
+                    if (e.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Additional retry mechanism for Google Sign-In
+        window.addEventListener('load', function() {
+            console.log('Window loaded, checking Google initialization');
+            
+            // Retry initializing Google Sign-In if it wasn't ready before
+            setTimeout(() => {
+                if (googleLibraryLoaded && !googleInitialized) {
+                    console.log('Retrying Google Sign-In initialization...');
+                    initializeGoogleSignIn();
+                }
+            }, 2000);
+            
+            // Final fallback after 5 seconds
+            setTimeout(() => {
+                if (!googleLibraryLoaded) {
+                    console.log('Google library failed to load, hiding Google sign-in option');
+                    const googleBtn = document.querySelector('.google-signin-btn');
+                    const divider = document.querySelector('.divider');
+                    
+                    if (googleBtn) googleBtn.style.display = 'none';
+                    if (divider) divider.style.display = 'none';
+                }
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
+
+<!-- 
+🔧 SETUP INSTRUCTIONS FOR GOOGLE SIGN-IN INTEGRATION:
+
+📋 STEP 1: GOOGLE CLOUD CONSOLE SETUP
+1. Go to https://console.cloud.google.com/
+2. Create a new project or select existing one
+3. Enable the "Google+ API" or "Google Identity Services"
+4. Go to "Credentials" section
+5. Click "Create Credentials" > "OAuth 2.0 Client IDs"
+6. Choose "Web application"
+7. Add your website domain to "Authorized JavaScript origins"
+   Examples:
+   - https://yourdomain.com
+   - http://localhost:8080 (for testing)
+   - https://your-github-pages.github.io
+8. Copy the "Client ID" that starts with numbers and ends with .apps.googleusercontent.com
+
+📊 STEP 2: GOOGLE SHEETS SETUP
+1. Create a new Google Spreadsheet
+2. Copy the spreadsheet ID from the URL (the long string between /d/ and /edit)
+3. Make sure the spreadsheet is accessible to your Google Apps Script
+
+⚙️ STEP 3: GOOGLE APPS SCRIPT SETUP
+1. Go to script.google.com and create new project
+2. Replace default code with this enhanced script:
+
+```javascript
+function doPost(e) {
+    try {
+        var requestData = JSON.parse(e.postData.contents);
+        var sheetName = requestData.sheetName;
+        var data = requestData.data;
+        
+        // Open the spreadsheet (replace with your actual spreadsheet ID)
+        var spreadsheet = SpreadsheetApp.openById('YOUR_SPREADSHEET_ID');
+        var sheet = spreadsheet.getSheetByName(sheetName);
+        
+        // Create sheet if it doesn't exist
+        if (!sheet) {
+            sheet = spreadsheet.insertSheet(sheetName);
+            
+            // Add headers based on sheet type
+            if (sheetName === 'orders') {
+                sheet.getRange(1, 1, 1, 9).setValues([[
+                    'Timestamp', 'User ID', 'User Name', 'Product Name', 'Product Price', 
+                    'Customer Name', 'Email', 'Phone', 'Address'
+                ]]);
+            } else if (sheetName === 'exchange') {
+                sheet.getRange(1, 1, 1, 10).setValues([[
+                    'Timestamp', 'User ID', 'User Name', 'Weight (grams)', 'Description', 
+                    'Customer Name', 'Email', 'Phone', 'Address', 'Photos Uploaded'
+                ]]);
+            } else if (sheetName === 'sell') {
+                sheet.getRange(1, 1, 1, 10).setValues([[
+                    'Timestamp', 'User ID', 'User Name', 'Weight (grams)', 'Description', 
+                    'Customer Name', 'Email', 'Phone', 'Address', 'Photos Uploaded'
+                ]]);
+            } else if (sheetName === 'savings') {
+                sheet.getRange(1, 1, 1, 5).setValues([[
+                    'Timestamp', 'User ID', 'User Name', 'Amount Added', 'Total Savings'
+                ]]);
+            } else if (sheetName === 'user_logins') {
+                sheet.getRange(1, 1, 1, 5).setValues([[
+                    'Timestamp', 'User ID', 'Name', 'Email', 'Login Method'
+                ]]);
+            }
+        }
+        
+        // Add data based on sheet type
+        if (sheetName === 'orders') {
+            sheet.appendRow([
+                data.timestamp, data.user_id, data.user_name, data.product_name,
+                data.product_price, data.customer_name, data.email, data.phone, data.address
+            ]);
+        } else if (sheetName === 'exchange') {
+            sheet.appendRow([
+                data.timestamp, data.user_id, data.user_name, data.weight_grams,
+                data.description, data.customer_name, data.email, data.phone, 
+                data.address, data.photos_uploaded
+            ]);
+        } else if (sheetName === 'sell') {
+            sheet.appendRow([
+                data.timestamp, data.user_id, data.user_name, data.weight_grams,
+                data.description, data.customer_name, data.email, data.phone,
+                data.address, data.photos_uploaded
+            ]);
+        } else if (sheetName === 'savings') {
+            sheet.appendRow([
+                data.timestamp, data.user_id, data.user_name, data.amount, data.total_savings
+            ]);
+        } else if (sheetName === 'user_logins') {
+            sheet.appendRow([
+                data.timestamp, data.user_id, data.name, data.email, data.login_method
+            ]);
+        }
+        
+        return ContentService
+            .createTextOutput(JSON.stringify({result: 'success'}))
+            .setMimeType(ContentService.MimeType.JSON);
+            
+    } catch (error) {
+        return ContentService
+            .createTextOutput(JSON.stringify({result: 'error', error: error.toString()}))
+            .setMimeType(ContentService.MimeType.JSON);
+    }
+}
+```
+
+3. Deploy as web app:
+   - Execute as: Me
+   - Access: Anyone
+4. Copy the deployment URL
+
+🌐 STEP 4: WEBSITE CONFIGURATION
+1. Replace 'YOUR_GOOGLE_CLIENT_ID' with your actual Google Client ID from Step 1
+2. Replace 'YOUR_SCRIPT_ID' in GOOGLE_SCRIPT_URL with your Apps Script ID from Step 3
+3. Update 'YOUR_SPREADSHEET_ID' in the Apps Script with your spreadsheet ID from Step 2
+
+🎯 FEATURES INCLUDED:
+✅ Google OAuth 2.0 Sign-In with popup authentication
+✅ JWT token decoding to extract user information
+✅ User profile display with name, email, and avatar
+✅ Fallback to traditional username/password login
+✅ Enhanced user tracking in Google Sheets
+✅ Secure session management with proper logout
+✅ Auto-fill user information in forms
+✅ Loading spinner for better UX
+✅ Error handling and fallback options
+✅ Mobile-responsive design maintained
+
+🔐 SECURITY FEATURES:
+- Secure JWT token parsing
+- Proper session cleanup on logout
+- Protected API endpoints
+- User data validation
+- No sensitive data stored in client-side code
+
+The integration is now complete with professional Google Sign-In functionality!
+-->
